@@ -5,7 +5,7 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (

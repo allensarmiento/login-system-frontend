@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 import { getUserData } from '../auth/user.auth';
 
 const Home = () => {
@@ -10,7 +12,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div>{user && user.name}, you are logged in!</div>
+    <Jumbotron>
+      <Container>
+        <h2>{user && user.name}, you are logged in!</h2>
+      </Container>
+    </Jumbotron>
   );
 };
 

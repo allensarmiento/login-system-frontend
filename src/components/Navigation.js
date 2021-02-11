@@ -1,4 +1,6 @@
 import { Link, withRouter } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import { isLoggedIn } from '../auth/user.auth';
 
 const Navigation = ({ history }) => {
@@ -14,26 +16,32 @@ const Navigation = ({ history }) => {
 
   if (isLoggedIn()) {
     return (
-      <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button onClick={signOut}>
-          Sign Out
-        </button>
-      </nav>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#">Login System</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#" onClick={signOut}>Sign Out</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   } else {
     return (
-      <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Link to="/signin">
-          <button>
-            Sign In
-          </button>
-        </Link>
-        <Link to="/signup">
-          <button>
-            Sign Up
-          </button>
-        </Link>
-      </nav>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#">Login System</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Link to="/signin">
+              <Nav.Link as="span">Sign In</Nav.Link>
+            </Link>
+            <Link to="/signup">
+              <Nav.Link as="span">Sign Up</Nav.Link>
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 };

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { signinUser } from '../auth/user.auth';
 
 const Signin = ({ history }) => {
@@ -28,19 +30,27 @@ const Signin = ({ history }) => {
   };
 
   return (
-    <div>
-      <form>
-        <input
-          type="email"
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          type="password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <button type="submit" onClick={onSignIn}>Sign In</button>
-      </form>
-      <Link to="/signup"><button>Register</button></Link>
+    <div style={{ maxWidth: '500px', margin: 'auto' }}>
+      <h2>Sign In</h2>
+      <Form>
+        <Form.Group controlId="formEmail">
+          <Form.Control
+            type="email"
+            placeholder="Email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="formPassword">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </Form.Group>
+        <Button onClick={onSignIn} variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 };
