@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
+import { signinUser } from '../auth/user.auth';
 
 const Signin = ({ history }) => {
   const [email, setEmail] = useState('');
@@ -10,20 +10,21 @@ const Signin = ({ history }) => {
     sessionStorage.setItem('token', token);
   };
 
+  const saveUserId = (id) => {
+    sessionStorage.setItem('user', id);
+  };
+
   const onSignIn = (event) => {
     event.preventDefault();
 
-    axios
-      .post('http://localhost:5000/auth/signin', { email, password })
-      .then((response) => response.data)
-      .then((data) => {
-        const { success, user, token } = data;
-        if (success === 'true' && user.id) {
-          saveTokenInSession(token);
-          console.log('pushing history')
-          history.push('/');
-        }
-      });
+    signinUser({ email, password }).then((data) => {
+      const { success, user, token } = data;
+      if (success === 'true' && user.id) {
+        saveTokenInSession(token);
+        saveUserId(user.id);
+        history.push('/');
+      }
+    });
   };
 
   return (

@@ -1,6 +1,16 @@
+import { useState, useEffect } from 'react';
+import { getUserData } from '../auth/user.auth';
+
 const Home = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUserData()
+      .then((userData) => setUser(userData));
+  }, []);
+
   return (
-    <div>You are logged in!</div>
+    <div>{user && user.name}, you are logged in!</div>
   );
 };
 

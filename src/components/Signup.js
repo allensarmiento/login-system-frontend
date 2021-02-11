@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
+import { signupUser } from '../auth/user.auth';
 
 const Signup = ({ history }) => {
   const [name, setName] = useState('');
@@ -9,15 +9,10 @@ const Signup = ({ history }) => {
 
   const onSignup = (event) => {
     event.preventDefault();
-
-    axios
-      .post('http://localhost:5000/auth/signup', { name, email, password })
-      .then((response) => response.data)
-      .then((user) => {
-        if (user.id) {
-          history.push('/');
-        }
-      });
+    
+    signupUser({ name, email, password }).then((user) => {
+      if (user.id) history.push('/');
+    })
   };
 
   return (

@@ -1,17 +1,18 @@
 import { Link, withRouter } from 'react-router-dom';
+import { isLoggedIn } from '../auth/user.auth';
 
-const Navigation = ({ loggedIn, history }) => {
+const Navigation = ({ history }) => {
   const signOut = () => {
     const token = sessionStorage.getItem('token');
+    if (token) sessionStorage.removeItem('token');
 
-    if (token) {
-      sessionStorage.removeItem('token');
-    }
+    const user = sessionStorage.getItem('user');
+    if (user) sessionStorage.removeItem('user');
 
     history.push('/signin');
   };
 
-  if (loggedIn) {
+  if (isLoggedIn()) {
     return (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button onClick={signOut}>

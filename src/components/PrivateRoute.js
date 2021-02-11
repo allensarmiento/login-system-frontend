@@ -1,9 +1,12 @@
 import { Route, Redirect } from 'react-router-dom';
+import { isLoggedIn } from '../auth/user.auth';
 
-const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={(props) => {
-      return loggedIn ? <Component {...props} /> : <Redirect to="/signin" />;
+      return isLoggedIn()
+        ? <Component {...props} />
+        : <Redirect to="/signin" />;
     }} />
   );
 };
