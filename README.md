@@ -15,12 +15,12 @@ React app to implement the frontend portion of registering users and signing in.
 
 Sign in page: Initial page that is loaded.
 
-![alt text](https://github.com/allensarmiento/login-system-frontend/blob/main/signin.png?raw=true)
+![alt text](https://github.com/allensarmiento/login-system-frontend/blob/main/screenshots/signin.png?raw=true)
 
 Sign up page: Lets users register an account.
 
-![alt text](https://github.com/allensarmiento/login-system-frontend/blob/main/signup.png?raw=true)
+![alt text](https://github.com/allensarmiento/login-system-frontend/blob/main/screenshots/signup.png?raw=true)
 
 Home page: Displays when user is signed in.
 
-![alt text](https://github.com/allensarmiento/login-system-frontend/blob/main/loggedin.png?raw=true)
+![alt text](https://github.com/allensarmiento/login-system-frontend/blob/main/screenshots/loggedin.png?raw=true)
