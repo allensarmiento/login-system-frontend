@@ -8,9 +8,6 @@ const Navigation = ({ history }) => {
     const token = sessionStorage.getItem('token');
     if (token) sessionStorage.removeItem('token');
 
-    const user = sessionStorage.getItem('user');
-    if (user) sessionStorage.removeItem('user');
-
     history.push('/signin');
   };
 

@@ -25,14 +25,13 @@ export const isLoggedIn = () => {
 
 export const getUserData = () => {
   const token = sessionStorage.getItem('token');
-  const user = sessionStorage.getItem('user');
 
-  if (!token || !user) {
+  if (!token) {
     return Promise.resolve(false);
   }
 
   return axios
-    .get(`http://localhost:4000/user/${user}`, {
+    .get(`http://localhost:4000/user`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

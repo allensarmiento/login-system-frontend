@@ -12,10 +12,6 @@ const Signin = ({ history }) => {
     sessionStorage.setItem('token', token);
   };
 
-  const saveUserId = (id) => {
-    sessionStorage.setItem('user', id);
-  };
-
   const onSignIn = (event) => {
     event.preventDefault();
 
@@ -23,7 +19,6 @@ const Signin = ({ history }) => {
       const { success, user, token } = data;
       if (success === 'true' && user.id) {
         saveTokenInSession(token);
-        saveUserId(user.id);
         history.push('/');
       }
     });
